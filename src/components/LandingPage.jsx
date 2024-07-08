@@ -5,10 +5,13 @@ function LandingPage() {
     <div className="w-full h-screen bg-zinc-800 pt-2">
       <div className="textStructure mt-52 px-20 font-['Bebas_Neue']">
         {["We Creare", "Eye-Opening", "Presentation"].map((text, i) => (
-          <div key={i} className="maskee">
-            <h1 className="uppercase text-[8vw] leading-[6.2vw] tracking ">
-              {text}
-            </h1>
+          <div key={i} className="masker">
+            <div className="w-fit flex gap-2">
+                {i === 1 && (<div className="w-[7vw] h-[5.5vw] relative -top-[.1vw] bg-red-500 rounded-md "></div>)}
+              <h1 className="uppercase text-[8vw] leading-[6.2vw] tracking ">
+                {text}
+              </h1>
+            </div>
           </div>
         ))}
       </div>
