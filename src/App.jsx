@@ -1,4 +1,5 @@
 import About from "./components/About";
+import Features from "./components/Features";
 import Illustration from "./components/Illustration";
 import LandingPage from "./components/LandingPage";
 import Marquee from "./components/Marquee";
@@ -11,7 +12,9 @@ function App() {
       <LandingPage />
       <Marquee />
       <About />
-      <Illustration  />
+      <Illustration />
+      <Features />
+      
     </div>
   );
 }
