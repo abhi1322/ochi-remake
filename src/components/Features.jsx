@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import Button from "./ui/Button";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 function Features() {
   const cardsData = [
@@ -17,36 +19,62 @@ function Features() {
     },
   ];
 
+  const [isHoveredTitle, setisHoveredTitle] = useState("");
+
   return (
     <div className="w-full h-full py-20">
       <div className="w-full px-20 pb-10 border-b border-zinc-600">
         <h3 className="text-6xl tracking-tight">Featured Projects</h3>
       </div>
-      <div className="cards w-full flex px-20 py-10 gap-10">
+      <motion.div className="relative cards w-full flex px-20 py-10 gap-10">
+        {isHoveredTitle != "" ? (
+          <div className="absolute flex justify-center items-center gap-1 top-[50%] right-[50%] translate-x-[50%] -translate-y-[50%] text-9xl z-50 uppercase font-['Bebas_Neue'] text-[#c0da63] overflow-hidden">
+            {isHoveredTitle.split("").map((l, i) => (
+              <motion.p
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{
+                  duration: 0.2,
+                  ease: "easeOut",
+                  delay: i * 0.11, // Add delay for staggered effect
+                }}
+                key={i}
+                // className="translate-y-[100%]"
+              >
+                {l}
+              </motion.p>
+            ))}
+          </div>
+        ) : null}
         {cardsData.map((card, index) => (
           <Card
             key={index}
             title={card.title}
             imgSrc={card.imgSrc}
             tags={card.tags}
+            onHovered={setisHoveredTitle} // Use onHovered prop
           />
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
 
-export default Features;
-
-function Card({ title, imgSrc, tags }) {
+function Card({ title, imgSrc, tags, onHovered }) {
+  // Match prop name
   Card.propTypes = {
     title: PropTypes.string.isRequired,
     imgSrc: PropTypes.string.isRequired,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+    onHovered: PropTypes.func.isRequired, // Correct prop type
   };
 
   return (
-    <div className="card w-1/2 h-[60vh]">
+    <motion.div
+      className="card w-1/2 h-[60vh]"
+      onMouseEnter={() => onHovered(title)} // Use onHovered here
+      onMouseLeave={() => onHovered("")} // Use onHovered here
+    >
       <div className="title flex gap-2 items-center mb-4">
         <div className="h-2 w-2 bg-white rounded-full"></div>
         <p className="uppercase text-lg">{title}</p>
@@ -65,6 +93,8 @@ function Card({ title, imgSrc, tags }) {
           <Button key={index}>{tag}</Button>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
+
+export default Features;
