@@ -1,5 +1,6 @@
 import About from "./components/About";
 import Features from "./components/Features";
+import Footer from "./components/Footer";
 import Illustration from "./components/Illustration";
 import LandingPage from "./components/LandingPage";
 import Marquee from "./components/Marquee";
@@ -16,6 +17,7 @@ function App() {
       <Illustration />
       <Features />
       <Ready />
+      <Footer />
     </div>
   );
 }
