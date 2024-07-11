@@ -1,13 +1,29 @@
 import { FiArrowUpRight } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 function LandingPage() {
   return (
-    <div className="w-full h-screen bg-zinc-800 pt-2">
+    <div
+      data-scroll
+      data-scroll-section
+      data-scroll-speed="-.4"
+      className="w-full h-screen bg-zinc-800 pt-2"
+    >
       <div className="textStructure mt-52 px-20 font-['Bebas_Neue']">
         {["We Creare", "Eye-Opening", "Presentation"].map((text, i) => (
           <div key={i} className="masker">
             <div className="w-fit flex gap-2">
-                {i === 1 && (<div className="w-[7vw] h-[5.5vw] relative -top-[.1vw] bg-red-500 rounded-md "></div>)}
+              {i === 1 && (
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "9vw" }}
+                  transition={{
+                    ease: [0.76, 0, 0.24, 1],
+                    duration: 1,
+                  }}
+                  className="w-[7vw] h-[5.5vw] relative -top-[.1vw] bg-red-500 rounded-md "
+                ></motion.div>
+              )}
               <h1 className="uppercase text-[8vw] leading-[6.2vw] tracking ">
                 {text}
               </h1>
