@@ -37,7 +37,7 @@ function Features() {
                 transition={{
                   duration: 0.2,
                   ease: "easeOut",
-                  delay: i * 0.11,
+                  delay: i * 0.0098,
                 }}
                 key={i}
               >

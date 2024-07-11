@@ -4,6 +4,7 @@ import Illustration from "./components/Illustration";
 import LandingPage from "./components/LandingPage";
 import Marquee from "./components/Marquee";
 import Navbar from "./components/Navbar";
+import Ready from "./components/Ready";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <About />
       <Illustration />
       <Features />
-      
+      <Ready />
     </div>
   );
 }
